@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box; }
+
+body {
+  margin: 40px;
+  background-color: #013e4b;
+  color: white;
+  font-family: "Inconsolata", monospace; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Oswald", sans-serif; }
+
+a {
+  color: #d36645; }
+
+.content-container {
+  max-width: 1000px;
+  margin: 0 auto; }
+
+#site-title {
+  text-align: center;
+  font-size: 60px;
+  text-transform: uppercase;
+  letter-spacing: 5px; }
+
+.venues-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .venues-container ul li {
+    position: relative;
+    flex: 1;
+    background-color: rgba(211, 102, 69, 0.2);
+    min-width: 400px;
+    border-radius: 3px;
+    padding: 20px;
+    padding-top: 50px;
+    margin-right: 5px;
+    margin-bottom: 5px; }
+    .venues-container ul li .venue-name {
+      display: inline-block;
+      margin: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px;
+      border-radius: 3px;
+      background-color: rgba(211, 102, 69, 0.5); }
+
+input {
+  font-family: "Inconsolata", monospace;
+  background: none;
+  color: white; }
+
+input[type='text'], input[type='email'], input[type='submit'] {
+  padding: 5px;
+  margin-bottom: 10px;
+  border: solid 1px white; }
+
+button, input[type='submit'] {
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 5px 10px;
+  border: solid 2px white;
+  background: none;
+  color: white;
+  font-family: "Inconsolata", monospace; }
+
+button:hover, input[type='submit']:hover {
+  background-color: white;
+  color: #d36645; }
+
+#file-upload {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1; }
+
+#upload-label {
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: solid 2px white;
+  display: inline-block; }
+
+#upload-label:hover {
+  background-color: white;
+  color: #d36645; }
+
+#create-venue-form {
+  text-align: center;
+  border-radius: 3px;
+  background-color: rgba(211, 102, 69, 0.2);
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box; }
+  #create-venue-form > div {
+    vertical-align: top;
+    display: inline-block;
+    max-width: 400px;
+    width: 100%; }
+  #create-venue-form input[type='text'], #create-venue-form input[type='email'] {
+    display: block;
+    width: 100%; }
+  #create-venue-form button[type='submit'] {
+    margin: 0 auto;
+    display: block; }
+
+.videos-table {
+  border-radius: 3px;
+  padding: 10px;
+  background-color: rgba(211, 102, 69, 0.2); }
+  .videos-table td {
+    padding-right: 10px; }
+
+/*# sourceMappingURL=main.css.map */

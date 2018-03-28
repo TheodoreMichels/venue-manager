@@ -1,0 +1,74 @@
+<h1 id='site-title'>Venue Manager</h1>
+
+<form action='/' id='create-venue-form'>
+    <h3>Create a new venue:</h3>
+    <div class='venue-info'>
+        <h4>Venue Info:</h4>
+        <input type='text' id='venue-name' placeholder='Enter a name for the venue'>
+        <input type='text' id='venue-directory' placeholder='Enter the url friendly directory name for the venue'>
+        <input type='text' id='venue-address' placeholder='Enter an address for the venue'>
+    </div>
+    
+    <div class='venue-contact'>
+        <h4>Venue Contact:</h4>
+        <input type='text' id='contact-first-name' placeholder='First Name'>
+        <input type='text' id='contact-last-name' placeholder='Last Name'>
+        <input type='email' id='contact-email' placeholder='Email'>
+        <input type='text' id='contact-phone' placeholder='Phone Number'>
+        
+    </div>
+    
+    <button type='submit'>Submit</button>
+</form>
+
+<h2>Venues:</h2>
+
+<div class='venues-container'>
+    <ul>
+        {{#each venues}}
+        <li>
+            <h3 class='venue-name'>{{name}}</h3>
+            <a href="/venues/{{directory}}"><p>/{{directory}}</p></a>
+            <p>{{address}}</p>
+            
+            <h4>Contact:</h4>
+            <p><strong>{{contact.first}} {{contact.last}}</strong></p>
+            <p><a href='mailto:{{contact.email}}'>{{contact.email}}</a></p>
+            <p>{{contact.phone}}</p>
+            
+            <form action='/' method='POST' onsubmit='return confirm("Do you really want to delete this venue?");'>
+                <input name='id' type='hidden' value='{{_id}}'>
+                <button type='submit'>Delete Venue</button>
+            </form>
+            
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+<script src='/socket.io/socket.io.js'></script>
+
+<script>
+    $(function(){
+        var socket = io();
+        
+        $(document).on('submit', '#create-venue-form', function(){
+            var venueData = {
+                name: $('#venue-name').val(),
+                directory: $('#venue-directory').val(),
+                address: $('#venue-address').val(),
+                contact: {
+                    first: $('#contact-first-name').val(),
+                    last: $('#contact-last-name').val(),
+                    email: $('#contact-email').val(),
+                    phone: $('#contact-phone').val()
+                }
+            };
+            
+            console.log('Submitted venue form on client.');
+            
+            socket.emit('create-venue', venueData);
+            return false;
+        });
+    });
+</script>

@@ -1,0 +1,161 @@
+$bg-color: #013e4b;
+
+$body-color: white;
+$accent-color: #d36645;
+$form-bg: transparentize($accent-color, 0.8);
+
+$title-font: 'Oswald', sans-serif;
+$general-font: 'Inconsolata', monospace;
+
+$spacing-xs: 5px;
+$spacing-s: 10px;
+$spacing-m: 20px;
+$spacing-l: 40px;
+$spacing-xl: 80px;
+
+$box-radius: 3px;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: $spacing-l;
+    background-color: $bg-color;
+    color: $body-color;
+    font-family: $general-font;
+}
+h1, h2, h3, h4, h5, h6{
+    font-family: $title-font;
+}
+
+a{
+    color: $accent-color;
+}
+.content-container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+#site-title{
+    text-align: center;
+    font-size: 60px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.venues-container{
+  ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+        position: relative;
+        flex: 1;
+        background-color: $form-bg;
+        min-width: 400px;
+
+        border-radius: $box-radius;
+        padding: $spacing-m;
+        padding-top: 50px;
+        margin-right: $spacing-xs;
+        margin-bottom: $spacing-xs;
+        .venue-name{
+            display: inline-block;
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: $spacing-s;
+            border-radius: $box-radius;
+            background-color: transparentize($accent-color, 0.5);
+        }
+    }
+  }
+}
+
+input{
+    font-family: $general-font;
+    background: none;
+    color: $body-color;
+
+}
+input[type='text'], input[type='email'], input[type='submit']{
+    padding: $spacing-xs;
+    margin-bottom: $spacing-s;
+    border: solid 1px $body-color;
+}
+
+button, input[type='submit']{
+    cursor: pointer;
+    border-radius: 20px;
+    padding: $spacing-xs $spacing-s;
+    border: solid 2px $body-color;
+    background: none;
+    color: $body-color;
+    font-family: $general-font;
+}
+button:hover, input[type='submit']:hover{
+    background-color: $body-color;
+    color: $accent-color;
+}
+
+#file-upload{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+#upload-label{
+    cursor: pointer;
+    padding: $spacing-s;
+    margin-bottom: $spacing-s;
+    border: solid 2px $body-color;
+    display: inline-block;
+}
+#upload-label:hover{
+    background-color: $body-color;
+    color: $accent-color;
+}
+
+.videos-table{
+    table{
+    }
+}
+
+#create-venue-form{
+    text-align: center;
+    border-radius: $box-radius;
+    background-color: $form-bg;
+    padding: $spacing-s;
+
+    margin: 0 auto;
+    box-sizing: border-box;
+    >div{
+        vertical-align: top;
+        display: inline-block;
+        max-width: 400px;
+        width: 100%;
+    }
+    input[type='text'], input[type='email']{
+
+        display: block;
+        width: 100%;
+    }
+    button[type='submit']{
+        margin: 0 auto;
+        display: block;
+    }
+}
+
+.videos-table{
+    border-radius: $box-radius;
+    padding: $spacing-s;
+    background-color: $form-bg;
+    td{
+        padding-right: $spacing-s;
+    }
+}

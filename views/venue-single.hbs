@@ -1,0 +1,55 @@
+<h2><a href='/'>Home</a></h2>
+
+<h1>{{title}}</h1>
+<h2>Directory: <em>{{directory}}</em></h2>
+
+<div class='videos-table'>
+<h3>Associated Videos:</h3>
+<table>
+    {{#each files}}
+    <tr>
+        <td><em>{{this}}</em></td>
+        <td>
+            <form action='/venues/{{../directory}}/delete/{{this}}' method='POST' onsubmit='return confirm("Are you sure you want to delete this video?");'>
+                <button type='submit'>Delete</button>
+            </form>
+        </td>
+    </tr>
+    {{/each}}
+</table>
+</div>
+
+<p>Upload a new video file for this venue:</p>
+
+<form id='video-upload-form' action='/venues/{{directory}}/upload' method='POST' enctype='multipart/form-data'>
+    <label id='upload-label' for='file-upload'>Choose a file to upload.</label>
+    <input type='file' name='videoFile' id='file-upload'><br>
+    
+    <input type='submit' value='Upload File' id='file-submit'>
+</form>
+
+<script>
+    $('#file-submit').prop('disabled', true);
+
+    var uploadError = false;
+
+    $('#file-upload').on('change', function(e){
+        $('#file-submit').prop('disabled', true);
+        
+        var ext = $('#file-upload').val().split('.').pop().toLowerCase();
+        
+        if($.inArray(ext, ['mov', 'mp4']) == -1){
+            alert('Please upload a movie file.');
+            uploadError = true;
+        }else{
+            uploadError = false;
+        }
+        
+        if(!uploadError){
+            var fileName = e.target.files[0].name;
+            $('#upload-label').html(fileName);
+            $('#file-submit').prop('disabled', false);
+        }
+        
+    });
+</script>
